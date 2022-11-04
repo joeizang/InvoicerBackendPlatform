@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoicerBackendModelsExtension.DTOs
-{
-    public record InvoiceItemDto(Guid itemId, double Quantity, string Description, decimal UnitPrice);
-}
+namespace InvoicerBackendModelsExtension.DTOs;
+
+public record InvoiceItemDto(Guid ItemId, double Quantity, string Description, decimal UnitPrice);
