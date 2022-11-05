@@ -8,7 +8,7 @@ namespace InvoicerBackendModelsExtension.AbstractTypes;
 
 public interface IBaseEntity
 {
-    Guid Id { get; set; }
+    Guid Id { get; }
 
     DateTimeOffset CreatedAt { get; set; }
 

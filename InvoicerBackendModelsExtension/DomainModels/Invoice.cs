@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvoicerBackendModelsExtension.DTOs;
 
 namespace InvoicerBackendModelsExtension.DomainModels;
 
@@ -42,4 +43,19 @@ public class Invoice : BaseEntity
 
     public IReadOnlyCollection<InvoiceItem> InvoicedItems 
         => _invoiceItems.AsReadOnly();
+
+    public void AddInvoicedItems(InvoiceItem[] items)
+    {
+        if (!items.Any())
+            throw new ArgumentException(
+                "An invoice cannot be created without at least one item being invoiced for!");
+        var length = items.Length;
+        var count = 0;
+
+        while (count < length)
+        {
+            _invoiceItems.Add(items[count]);
+            count++;
+        }
+    }
 }

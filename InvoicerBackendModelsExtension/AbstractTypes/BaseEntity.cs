@@ -9,19 +9,32 @@ namespace InvoicerBackendModelsExtension.AbstractTypes;
 
 public abstract class BaseEntity : IBaseEntity
 {
-    protected BaseEntity(CryptoRandom random) 
+    protected BaseEntity(CryptoRandom random)
     {
-        Id = random.NextGuid();
+        _random = random;
+        GenerateId();
         CreatedAt = DateTimeOffset.UtcNow;
         UpdatedAt = DateTimeOffset.UtcNow;
     }
 
+    private readonly CryptoRandom _random;
     protected BaseEntity()
     {
-
+        GenerateId();
+        CreatedAt = DateTimeOffset.UtcNow;
+        UpdatedAt = DateTimeOffset.UtcNow;
     }
-    public Guid Id { get; set; }
+
+    public Guid Id { get; private set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }
     public bool IsDeleted { get; set; }
+
+    public void GenerateId()
+    {
+        if (Id == Guid.Empty)
+        {
+            Id = _random.NextGuid();
+        }
+    }
 }

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoicerBackendModelsExtens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicerDomainBusinessLogic", "InvoicerDomainBusinessLogic\InvoicerDomainBusinessLogic.csproj", "{29BDD219-C230-46EB-B755-0AF883AC6A5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicerPlatformTests", "InvoicerPlatformTests\InvoicerPlatformTests.csproj", "{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{29BDD219-C230-46EB-B755-0AF883AC6A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29BDD219-C230-46EB-B755-0AF883AC6A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29BDD219-C230-46EB-B755-0AF883AC6A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace InvoicerBackendModelsExtension.DomainModels
     {
         public Customer(CryptoRandom random) : base(random) { }
 
-        private Customer() { }
+        public Customer() { }
         
         public string CustomerName { get; set; } = string.Empty;
 
