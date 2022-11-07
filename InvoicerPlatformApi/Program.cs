@@ -8,8 +8,8 @@ builder.Services.AddSingleton<CryptoRandom>();
 
 builder.Services.AddDbContext<InvoicerPlatformContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
-        .EnableSensitiveDataLogging();
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"));
+        //.EnableSensitiveDataLogging();
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

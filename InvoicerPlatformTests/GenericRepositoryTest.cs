@@ -1,6 +1,6 @@
 namespace InvoicerPlatformTests;
 
-public class UnitTest1
+public class GenericRepositoryTest
 {
     [Fact]
     public void Test1()

@@ -9,9 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoicerDataExtension", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoicerBackendModelsExtension", "InvoicerBackendModelsExtension\InvoicerBackendModelsExtension.csproj", "{367FC57C-4BAA-45E2-9875-ADCF2298B648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicerDomainBusinessLogic", "InvoicerDomainBusinessLogic\InvoicerDomainBusinessLogic.csproj", "{29BDD219-C230-46EB-B755-0AF883AC6A5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoicerDomainBusinessLogic", "InvoicerDomainBusinessLogic\InvoicerDomainBusinessLogic.csproj", "{29BDD219-C230-46EB-B755-0AF883AC6A5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicerPlatformTests", "InvoicerPlatformTests\InvoicerPlatformTests.csproj", "{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoicerPlatformTests", "InvoicerPlatformTests\InvoicerPlatformTests.csproj", "{72598EC2-477C-4DF4-A73E-6C3CF85A93C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB103D61-59DD-45BA-BD02-4453D48F6DBC}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

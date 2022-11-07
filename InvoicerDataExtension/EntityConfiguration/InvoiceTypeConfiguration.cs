@@ -17,8 +17,7 @@ public class InvoiceTypeConfiguration : IEntityTypeConfiguration<Invoice>
         builder.HasQueryFilter(x => !x.IsDeleted);
 
         builder.HasMany(x => x.InvoicedItems)
-            .WithOne()
-            .HasForeignKey(x => x.InvoiceId)
+            .WithOne(x => x.Invoice)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.Property(x => x.BriefInvoiceDescription)
