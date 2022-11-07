@@ -10,15 +10,15 @@ namespace InvoicerDataExtension.Abstractions;
 
 public interface IGenericRepository<T> where T : BaseEntity
 {
-    Task<IEnumerable<U>> GetMany<U>(Specification<T> spec) where U : class;
+    Task<IEnumerable<T>> GetMany(Specification<T> spec);
 
-    Task<U> GetOneById<U>(Specification<T> spec) where U : class;
+    Task<T> GetOneById(Specification<T> spec);
 
-    Task<U> GetOneByPredicates<U>(Specification<T> spec) where U : class;
+    Task<T> GetOneByPredicates(Specification<T> spec);
 
-    Task<U> CreateOne<U>(T entity) where U : class;
+    Task<T> CreateOne(T entity);
 
-    Task<U> EditOne<U>(T entity) where U : class;
+    Task<T> EditOne(T entity);
 
-    Task<U> DeleteOne<U>(T entity) where U : class;
+    Task<T> DeleteOne(T entity);
 }

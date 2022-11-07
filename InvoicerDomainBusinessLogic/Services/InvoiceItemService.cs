@@ -2,6 +2,8 @@
 using InvoicerBackendModelsExtension.DTOs;
 using InvoicerBackendModelsExtension.Responses;
 using InvoicerDataExtension.Abstractions;
+using InvoicerDataExtension.Specifications;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,6 @@ namespace InvoicerDomainBusinessLogic.Services
             _itemRepo = itemRepo;
         }
 
-        public SearchParams<InvoiceItem> SearchItems { get; set; }
 
         public async  Task<EnumerableResponse<InvoiceItemDto>> GetInvoiceItems(Guid invoiceId)
         {
@@ -28,8 +29,8 @@ namespace InvoicerDomainBusinessLogic.Services
             {
                 x => x.Invoice
             };
-            var result = await _itemRepo.GetMany<InvoiceItemDto>(search, x => x.InvoiceId.Equals(invoiceId)).ConfigureAwait(false);
-            return new EnumerableResponse<InvoiceItemDto>(result, true);
+            var result = await _itemRepo.GetMany(new InvoiceItemsByInvoiceIdSpecification(invoiceId)).ConfigureAwait(false);
+            return new EnumerableResponse<InvoiceItemDto>(result.Adapt<IEnumerable<InvoiceItemDto>>(), true);
         }
 
         

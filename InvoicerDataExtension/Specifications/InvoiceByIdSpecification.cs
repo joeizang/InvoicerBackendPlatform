@@ -12,3 +12,4 @@ public class InvoiceByIdSpecification : Specification<Invoice>
         AddInclude(x => x.InvoicedCustomer);
     }
 }
+
