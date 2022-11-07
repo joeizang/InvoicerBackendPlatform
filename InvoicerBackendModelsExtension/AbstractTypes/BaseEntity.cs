@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvoicerBackendModelsExtension.AbstractTypes;
 
-public abstract class BaseEntity //: IBaseEntity
+public abstract class BaseEntity : IBaseEntity
 {
     protected BaseEntity(CryptoRandom random)
     {
