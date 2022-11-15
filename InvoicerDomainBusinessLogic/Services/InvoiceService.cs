@@ -2,12 +2,6 @@
 using InvoicerBackendModelsExtension.DTOs;
 using InvoicerBackendModelsExtension.Responses;
 using InvoicerDataExtension.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Mapster;
 using InvoicerDataExtension.Specifications;
 
@@ -43,6 +37,21 @@ public class InvoiceService
         invoice.AddInvoicedItems(items);
         var result = await _repo.CreateOne(invoice).ConfigureAwait(false);
         return new Response<InvoiceCreatedDto>(result.Adapt<InvoiceCreatedDto>(), Array.Empty<string>(), "Successful", true);
+    }
+
+    public async Task<EnumerableResponse<InvoiceDetailDto>> GetAllInvoices()
+    {
+        var result = await _repo.GetMany(new GetAllInvoicesSpecification()).ConfigureAwait(false);
+
+        return new EnumerableResponse<InvoiceDetailDto>(result.Adapt<IEnumerable<InvoiceDetailDto>>(), true);
+    }
+
+
+    public async Task<EnumerableResponse<InvoiceDetailDto>> GetOrderedInvoicesByDate()
+    {
+        var result = await _repo.GetMany(new GetOrderedInvoiceSpecification()).ConfigureAwait(false);
+
+        return new EnumerableResponse<InvoiceDetailDto>(result.Adapt<IEnumerable<InvoiceDetailDto>>(), true);
     }
     
 }
