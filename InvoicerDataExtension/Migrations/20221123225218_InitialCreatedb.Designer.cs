@@ -12,14 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoicerDataExtension.Migrations
 {
     [DbContext(typeof(InvoicerPlatformContext))]
-    [Migration("20221106195825_InitialAppScaffold")]
-    partial class InitialAppScaffold
+    [Migration("20221123225218_InitialCreatedb")]
+    partial class InitialCreatedb
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);

@@ -47,7 +47,7 @@ public class InvoiceService
     }
 
 
-    public async Task<EnumerableResponse<InvoiceDetailDto>> GetOrderedInvoicesByDate()
+    public async Task<EnumerableResponse<InvoiceDetailDto>> GetInvoicesSortedByDate()
     {
         var result = await _repo.GetMany(new GetOrderedInvoiceSpecification()).ConfigureAwait(false);
 

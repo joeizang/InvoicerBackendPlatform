@@ -1,6 +1,7 @@
 using InvoicerDataExtension.Data;
 using Microsoft.EntityFrameworkCore;
 using SecurityDriven.Core;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<CryptoRandom>();
@@ -27,7 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 
 app.Run();
