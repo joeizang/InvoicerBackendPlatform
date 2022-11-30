@@ -1,4 +1,5 @@
 using InvoicerDataExtension.Data;
+using InvoicerDomainBusinessLogic;
 using Microsoft.EntityFrameworkCore;
 using SecurityDriven.Core;
 using System.Reflection;
@@ -12,6 +13,7 @@ builder.Services.AddDbContext<InvoicerPlatformContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"));
         //.EnableSensitiveDataLogging();
 });
+builder.Services.BootstrapBusinessLogic();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
