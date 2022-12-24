@@ -1,6 +1,8 @@
 ﻿
 
+using FluentValidation;
 using InvoicerBackendModelsExtension.DTOs;
+using InvoicerBackendModelsExtension.Responses;
 using InvoicerDomainBusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +19,7 @@ namespace InvoicerPlatformApi.EndPoints
                 var result = await service.GetAllInvoices().ConfigureAwait(false);
                 return Results.Ok(result);
             })
-            .Produces<InvoiceDetailDto>()
+            .Produces<EnumerableResponse<InvoiceDetailDto>>()
             .Produces(StatusCodes.Status200OK);
 
 
@@ -27,16 +29,30 @@ namespace InvoicerPlatformApi.EndPoints
                 var result = await service.GetInvoiceById(id).ConfigureAwait(false);
                 return result.Success is true ? Results.Ok(result) : Results.NotFound();
             })
-            .Produces<InvoiceDetailDto>()
+            .Produces<Response<InvoiceDetailDto>>()
             .Produces(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound);
 
 
-            group.MapPost("/", async (InvoiceService service, [FromBody] CreateInvoiceDto inputModel) =>
+            group.MapPost("/", async (InvoiceService service, IValidator<CreateInvoiceDto> validator, [FromBody] CreateInvoiceDto inputModel) =>
             {
-                var result = await service.CreateInvoice(inputModel).ConfigureAwait(false);
-            });
+                var check = validator.Validate(inputModel);
+                if (!check.IsValid && check.Errors.Any()) return Results.ValidationProblem((IDictionary<string, string[]>)check.Errors.ToDictionary(x => x.PropertyName));
+                try
+                {
+                    var result = await service.CreateInvoice(inputModel).ConfigureAwait(false);
+                    return Results.Ok(result);
+                }
+                catch(Exception ex)
+                {
+                    return Results.Problem(ex.Message);
+                }
+
+            })
+            .Produces<Response<InvoiceDetailDto>>()
+            .Produces(StatusCodes.Status201Created)
+            .Produces(StatusCodes.Status400BadRequest);
 
 
             return group;

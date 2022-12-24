@@ -23,11 +23,12 @@ public class InvoiceService
 
         var result = await _repo.GetOneByPredicates(new InvoiceByIdSpecification(invoiceId))
             .ConfigureAwait(false);
-        return new Response<InvoiceDetailDto>(result.Adapt<InvoiceDetailDto>(), new string[] { }, "Invoice Found", true);
+        return new Response<InvoiceDetailDto>(result.Adapt<InvoiceDetailDto>(), Array.Empty<string>(), "Invoice Found", true);
     }
 
     public async Task<Response<InvoiceCreatedDto>> CreateInvoice(CreateInvoiceDto model)
     {
+        if (model is null) return new Response<InvoiceCreatedDto>(null, Array.Empty<string>(), "Post Invalid", false);
         var invoice = model.Adapt<Invoice>();
         var fetchedCustomer = await _customerRepo.GetOneById(new CustomerByIdSpecification(
             model.Customer.CustomerId)).ConfigureAwait(false);
