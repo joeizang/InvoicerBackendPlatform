@@ -6,4 +6,4 @@ using System.Threading.Tasks;
 
 namespace InvoicerBackendModelsExtension.DTOs;
 
-public record InvoiceItemDto(Guid ItemId, double Quantity, string Description, decimal UnitPrice);
+public record CreateInvoiceItemDto(Guid ItemId, double Quantity, string Description, decimal UnitPrice);

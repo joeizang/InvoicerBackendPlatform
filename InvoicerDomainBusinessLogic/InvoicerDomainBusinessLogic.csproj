@@ -10,4 +10,10 @@
     <ProjectReference Include="..\InvoicerDataExtension\InvoicerDataExtension.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Policies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Policies\" />
+  </ItemGroup>
 </Project>

@@ -48,9 +48,11 @@
     <None Remove="Mediator.SourceGenerator" />
     <None Remove="Validators\" />
     <None Remove="Validators\InvoiceValidators\" />
+    <None Remove="Validators\InvoiceItemValidators\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validators\" />
     <Folder Include="Validators\InvoiceValidators\" />
+    <Folder Include="Validators\InvoiceItemValidators\" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using InvoicerBackendModelsExtension.DTOs;
 using InvoicerDataExtension.Data;
 using InvoicerDomainBusinessLogic;
+using InvoicerPlatformApi.Validators.InvoiceItemValidators;
 using InvoicerPlatformApi.Validators.InvoiceValidators;
 using Microsoft.EntityFrameworkCore;
 using SecurityDriven.Core;
@@ -18,6 +19,8 @@ builder.Services.AddDbContext<InvoicerPlatformContext>(options =>
         //.EnableSensitiveDataLogging();
 });
 builder.Services.AddScoped<IValidator<CreateInvoiceDto>, CreateInvoiceDtoValidator>();
+builder.Services.AddScoped<IValidator<UpdateInvoiceDto>, UpdateInvoiceDtoValidator>();
+builder.Services.AddScoped<IValidator<CreateInvoiceItemDto>, CreateInvoiceItemDtoValidator>();
 builder.Services.BootstrapBusinessLogic();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

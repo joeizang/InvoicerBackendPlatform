@@ -42,6 +42,7 @@ namespace InvoicerPlatformApi.EndPoints
                 try
                 {
                     var result = await service.CreateInvoice(inputModel).ConfigureAwait(false);
+                    if (!result.Success && result.Data is null) return Results.BadRequest(result.Errors);
                     return Results.Ok(result);
                 }
                 catch(Exception ex)
@@ -53,6 +54,11 @@ namespace InvoicerPlatformApi.EndPoints
             .Produces<Response<InvoiceDetailDto>>()
             .Produces(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status400BadRequest);
+
+            group.MapPut("/", async (InvoiceService service, IValidator<UpdateInvoiceDto> validator, [FromBody] UpdateInvoiceDto inputModel) =>
+            {
+
+            });
 
 
             return group;

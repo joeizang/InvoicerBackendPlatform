@@ -8,4 +8,4 @@ namespace InvoicerBackendModelsExtension.DTOs;
 
 public record InvoiceDetailDto(string BriefInvoiceDescription,string SignatureUrl,
     string Logo,string BusinessTagLine,string BusinessName, DateOnly InvoiceDate, decimal Total,double Tax,
-    CustomerDto Customer, IEnumerable<InvoiceItemDto> InvoiceItems);
+    CustomerDto Customer, IEnumerable<CreateInvoiceItemDto> InvoiceItems);

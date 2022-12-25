@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoicerBackendModelsExtension.DTOs
+namespace InvoicerBackendModelsExtension.DTOs;
+
+public record InvoiceCreatedDto(Guid InvoiceId, string CustomerName, string CustomerEmail,
+    DateTimeOffset CreatedAt)
 {
-    public record InvoiceCreatedDto(Guid InvoiceId, string CustomerName, string CustomerEmail,
-        DateTimeOffset CreatedAt)
-    {
-    }
 }
+
