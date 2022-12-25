@@ -8,6 +8,9 @@ namespace InvoicerPlatformApi.Validators.InvoiceItemValidators
 	{
 		public CreateInvoiceItemDtoValidator()
 		{
+            RuleFor(item => item.Quantity)
+                .NotEmpty()
+                .WithMessage("Cannot be empty or a negative value");
 		}
 	}
 }
