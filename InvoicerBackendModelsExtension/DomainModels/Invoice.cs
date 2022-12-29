@@ -19,10 +19,6 @@ public class Invoice : BaseEntity
 
     private List<InvoiceItem> _invoiceItems;
 
-    public Customer InvoicedCustomer { get; set; } = default!;
-
-    public Guid CustomerId { get; set; }
-
     public string BriefInvoiceDescription { get; set; } = string.Empty;
 
     public string SignatureUrl { get; set; } = string.Empty;
@@ -36,6 +32,8 @@ public class Invoice : BaseEntity
     public DateOnly InvoiceDate { get; set; }
 
     public decimal Total { get; set; }
+
+    public ChargeTax TaxType { get; set; }
 
     public double Tax { get; set; }
 

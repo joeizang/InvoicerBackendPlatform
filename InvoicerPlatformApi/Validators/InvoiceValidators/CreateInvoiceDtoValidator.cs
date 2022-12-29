@@ -37,8 +37,8 @@ public class CreateInvoiceDtoValidator : AbstractValidator<CreateInvoiceDto>
 			.GreaterThan(DateOnly.FromDateTime(DateTime.Now.AddMonths(1)))
 			.WithMessage("Invoices cannot have a date in the past longer than 3 months from when the invoice was created and it also cannot have a date more than a month in the future from when an invoice has been created");
 		RuleFor(invoice => invoice.Tax)
-			.GreaterThan(0.05) // values should be configurable so users can supply their tax values
-			.LessThan(0.11)
+			.NotEqual(double.MinValue)
+			.NotEqual(double.MaxValue)
 			.WithMessage("{PropertyName} cannot be less than the minimum stipulated by law and cannot be more than maximum allowed by law");
 		RuleFor(invoice => invoice.Total)
 			.NotEmpty()

@@ -9,21 +9,23 @@ using System.Threading.Tasks;
 
 namespace InvoicerDataExtension.EntityConfiguration
 {
-    public class CustomerTypeConfiguration : IEntityTypeConfiguration<Customer>
+    public class CustomerTypeConfiguration : IEntityTypeConfiguration<PlatformCustomer>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public void Configure(EntityTypeBuilder<PlatformCustomer> builder)
         {
             builder.HasKey(x => x.Id);
             builder.HasQueryFilter(x => !x.IsDeleted);
-            builder.Property(x => x.CustomerName)
+            builder.Property(x => x.PlatformCustomerName)
             .HasMaxLength(70)
             .IsRequired();
-            builder.Property(x => x.CustomerAddress)
+            builder.Property(x => x.PlatformCustomerEmail)
                 .HasMaxLength(100)
                 .IsRequired();
-            builder.Property(x => x.CustomerLegacyId)
-                .HasMaxLength(50)
-                .IsRequired(false);
+            builder.HasMany(pc => pc.Invoices)
+                .WithOne(pi => pi.Customer)
+                .IsRequired()
+                .HasForeignKey(x => x.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

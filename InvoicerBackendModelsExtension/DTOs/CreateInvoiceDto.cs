@@ -5,4 +5,6 @@ public record CreateInvoiceDto(string BriefInvoiceDescription, string SignatureU
     IEnumerable<CreateInvoiceItemDto> Items);
 
 
-public record UpdateInvoiceDto();
+public record UpdateInvoiceDto(string BriefInvoiceDescription, string SignatureUrl, string Logo, string BusinessTagLine,
+    string BusinessName, DateOnly InvoiceDate, decimal Total, double Tax, string OtherInfo, CustomerDto Customer,
+    IEnumerable<CreateInvoiceItemDto> Items);

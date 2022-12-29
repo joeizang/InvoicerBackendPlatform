@@ -10,12 +10,10 @@ namespace InvoicerDomainBusinessLogic.Services;
 public class InvoiceService
 {
     private readonly IGenericRepository<Invoice> _repo;
-    private readonly IGenericRepository<Customer> _customerRepo;
 
-    public InvoiceService(IGenericRepository<Invoice> repo, IGenericRepository<Customer> customerRepo)
+    public InvoiceService(IGenericRepository<Invoice> repo)
     {
         _repo = repo;
-        _customerRepo = customerRepo;
     }
 
     public async Task<Response<InvoiceDetailDto>> GetInvoiceById(Guid invoiceId)
@@ -30,9 +28,6 @@ public class InvoiceService
     {
         if (model is null) return new Response<InvoiceCreatedDto>(null, Array.Empty<string>(), "Post Invalid", false);
         var invoice = model.Adapt<Invoice>();
-        var fetchedCustomer = await _customerRepo.GetOneById(new CustomerByIdSpecification(
-            model.Customer.CustomerId)).ConfigureAwait(false);
-        invoice.InvoicedCustomer = fetchedCustomer ?? model.Customer.Adapt<Customer>();
 
         var items = model.Items.Adapt<IEnumerable<InvoiceItem>>().ToArray();
         invoice.AddInvoicedItems(items);

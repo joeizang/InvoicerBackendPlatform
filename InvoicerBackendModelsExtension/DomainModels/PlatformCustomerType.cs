@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvoicerBackendModelsExtension.DomainModels
 {
-    public enum CustomerType
+    public enum PlatformCustomerType
     {
         Platinum = 1,
         Gold,

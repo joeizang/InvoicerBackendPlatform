@@ -8,4 +8,4 @@ using System.Threading.Tasks;
 namespace InvoicerBackendModelsExtension.DTOs;
 
 public record CustomerDto(string CustomerName,string CustomerAddress,
-    string CustomerLegacyId,CustomerType CustomerRank, Guid CustomerId);
+    string CustomerLegacyId,PlatformCustomerType CustomerRank, Guid CustomerId);

@@ -10,7 +10,6 @@ public class InvoiceByIdSpecification : Specification<Invoice>
         : base(x => x.Id.Equals(invoiceId))
     {
         AddInclude(x => x.InvoicedItems);
-        AddInclude(x => x.InvoicedCustomer);
     }
 }
 
@@ -20,7 +19,6 @@ public class GetAllInvoicesSpecification : Specification<Invoice>
         : base(x => !x.Id.Equals(Guid.Empty))
     {
         AddInclude(x => x.InvoicedItems);
-        AddInclude(x => x.InvoicedCustomer);
     }
 }
 
@@ -30,9 +28,7 @@ public class GetOrderedInvoiceSpecification : Specification<Invoice>
     public GetOrderedInvoiceSpecification()
         : base(x => !x.Id.Equals(Guid.Empty))
     {
-        AddInclude(x => x.InvoicedCustomer);
         AddInclude(x => x.InvoicedItems);
-
         AddOrderBy(x => x.InvoiceDate);
     }
 }

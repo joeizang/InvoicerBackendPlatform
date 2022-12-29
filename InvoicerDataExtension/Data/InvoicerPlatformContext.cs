@@ -29,11 +29,11 @@ namespace InvoicerDataExtension.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Invoice> Invoices { get; set; } = default!;
 
-        public DbSet<InvoiceItem> InvoiceItems { get; set; }
+        public DbSet<InvoiceItem> InvoiceItems { get; set; } = default!;
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<PlatformCustomer> Customers { get; set; } = default!;
 
     }
 }
