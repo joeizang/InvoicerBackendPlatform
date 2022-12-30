@@ -17,4 +17,7 @@
     <Folder Include="Policies" />
     <Folder Include="Policies\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mapster.Core" Version="1.2.0" />
+  </ItemGroup>
 </Project>

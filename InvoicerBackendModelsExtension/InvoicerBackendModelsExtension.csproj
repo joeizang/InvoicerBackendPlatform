@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="CryptoRandom" Version="1.0.9" />
+    <PackageReference Include="Mapster.Core" Version="1.2.0" />
   </ItemGroup>
 
 </Project>
