@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InvoicerBackendModelsExtension.DTOs;
+using InvoicerBackendModelsExtension.DomainModels.ValueObjects;
 
 namespace InvoicerBackendModelsExtension.DomainModels;
 
@@ -31,7 +32,7 @@ public class Invoice : BaseEntity
 
     public DateOnly InvoiceDate { get; set; }
 
-    public decimal Total { get; set; }
+    public Money Total { get; set; }
 
     public ChargeTax TaxType { get; set; }
 

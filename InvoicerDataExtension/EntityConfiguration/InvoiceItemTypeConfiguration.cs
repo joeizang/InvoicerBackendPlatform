@@ -16,10 +16,6 @@ public class InvoiceItemTypeConfiguration : IEntityTypeConfiguration<InvoiceItem
         builder.HasKey(x => x.Id);
         builder.HasQueryFilter(item => !item.IsDeleted);
 
-        //builder.HasOne(item => item.Invoice)
-        //    .WithMany(item => item.InvoicedItems)
-        //    .OnDelete(DeleteBehavior.Restrict);
-
         builder.Property(item => item.Quantity).IsRequired();
         builder.Property(item => item.UnitPrice).IsRequired();
         builder.Property(item => item.Description)

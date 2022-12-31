@@ -39,5 +39,6 @@ public class InvoiceTypeConfiguration : IEntityTypeConfiguration<Invoice>
         builder.Property(x => x.OtherInfo)
             .HasMaxLength(200)
             .IsRequired(false);
+        builder.OwnsOne(x => x.Total);
     }
 }
