@@ -1,23 +1,41 @@
+using System.Collections.Generic;
 using InvoicerBackendModelsExtension.AbstractTypes;
+using InvoicerBackendModelsExtension.DTOs;
 using SecurityDriven.Core;
 
 namespace InvoicerBackendModelsExtension.DomainModels;
 
 public class PlatformCustomer : BaseEntity
 {
-    public PlatformCustomer(CryptoRandom random) : base(random)
-    {
-        
-    }
+  private List<PlatformInvoice> _invoices;
+  public PlatformCustomer(CryptoRandom random) : base(random)
+  {
+    _invoices = new();
+  }
 
-    public List<PlatformInvoice> Invoices { get; set; }
+  public PlatformCustomer(CreatePlatformCustomerDto inputModel)
+  {
+    _invoices = new();
+  }
 
-    public string PlatformCustomerName { get; set; }
+  public PlatformCustomer()
+  {
+    _invoices = new();
+  }
 
-    public string PlatformCustomerEmail { get; set; }
+  public IReadOnlyList<PlatformInvoice> Invoices => _invoices.AsReadOnly();
 
-    public PlatformCustomerType CustomerType { get; set; }
-    
-    
-    
+  public string PlatformCustomerName { get; set; } = string.Empty;
+
+  public string PlatformCustomerEmail { get; set; } = string.Empty;
+
+  public PlatformCustomerType CustomerType { get; set; }
+
+  private void InitializePlatformCustomer(CreatePlatformCustomerDto inputModel)
+  {
+
+  }
+
+
+
 }

@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace InvoicerBackendModelsExtension.DTOs;
 
-public record CustomerDto(string CustomerName,string CustomerAddress,
+public record PlatformCustomerDto(string CustomerName,string CustomerAddress,
     string CustomerLegacyId,PlatformCustomerType CustomerRank, Guid CustomerId);
