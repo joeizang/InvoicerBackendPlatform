@@ -14,23 +14,23 @@ public class CreateInvoiceDtoValidator : AbstractValidator<CreateInvoiceDto>
 			.NotEmpty()
 			.WithMessage("Business Name is not optional.")
 			.WithErrorCode("400");
-		RuleFor(invoice => invoice.Customer)
-			.NotNull()
+		RuleFor(invoice => invoice.CustomerName)
+			.NotEmpty()
 			.WithMessage("There must be a customer receiving an invoice")
 			.WithErrorCode("400");
-		RuleFor(invoice => invoice.Customer.CustomerName)
+		RuleFor(invoice => invoice.CustomerNumber)
 			.MinimumLength(2)
 			.MaximumLength(200)
 			.NotEmpty()
 			.WithMessage("Customer Name is not optional")
 			.WithErrorCode("400");
-		RuleFor(invoice => invoice.Customer.CustomerAddress)
+		RuleFor(invoice => invoice.CustomerAddress)
 			.MinimumLength(15)
 			.MaximumLength(150)
 			.NotEmpty()
 			.WithMessage("Every customer must have an address")
 			.WithErrorCode("400");
-		RuleFor(invoice => invoice.Customer.CustomerId)
+		RuleFor(invoice => invoice.CustomerNumber)
 			.NotEmpty();
 		RuleFor(invoice => invoice.InvoiceDate)
 			.LessThan(DateOnly.FromDateTime(DateTime.Now.AddMonths(-3)))

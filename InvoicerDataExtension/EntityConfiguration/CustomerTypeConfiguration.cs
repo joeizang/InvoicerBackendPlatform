@@ -16,7 +16,7 @@ namespace InvoicerDataExtension.EntityConfiguration
             builder.HasKey(x => x.Id);
             builder.HasQueryFilter(x => !x.IsDeleted);
             builder.Property(x => x.PlatformCustomerName)
-            .HasMaxLength(70)
+            .HasMaxLength(100)
             .IsRequired();
             builder.Property(x => x.PlatformCustomerEmail)
                 .HasMaxLength(100)

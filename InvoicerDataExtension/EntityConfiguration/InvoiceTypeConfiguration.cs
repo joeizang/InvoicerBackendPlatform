@@ -24,9 +24,9 @@ public class InvoiceTypeConfiguration : IEntityTypeConfiguration<Invoice>
             .HasMaxLength(100)
             .IsRequired(false);
         builder.Property(x => x.BusinessTagLine)
-            .HasMaxLength(50);
+            .HasMaxLength(100);
         builder.Property(x => x.BusinessName)
-            .HasMaxLength(50)
+            .HasMaxLength(100)
             .IsRequired();
         builder.Property(x => x.InvoiceDate)
             .IsRequired();
@@ -37,7 +37,7 @@ public class InvoiceTypeConfiguration : IEntityTypeConfiguration<Invoice>
             .HasMaxLength(150)
             .IsRequired();
         builder.Property(x => x.OtherInfo)
-            .HasMaxLength(200)
+            .HasMaxLength(300)
             .IsRequired(false);
         builder.OwnsOne(x => x.Total);
     }

@@ -15,23 +15,19 @@ namespace InvoicerPlatformApi.Validators.InvoiceValidators
 				.NotEmpty()
 				.WithMessage("Business Name is not optional.")
 				.WithErrorCode("400");
-			RuleFor(invoice => invoice.Customer)
-				.NotNull()
-				.WithMessage("There must be a customer receiving an invoice")
-				.WithErrorCode("400");
-			RuleFor(invoice => invoice.Customer.CustomerName)
+			RuleFor(invoice => invoice.CustomerName)
 				.MinimumLength(2)
 				.MaximumLength(200)
 				.NotEmpty()
 				.WithMessage("Customer Name is not optional")
 				.WithErrorCode("400");
-			RuleFor(invoice => invoice.Customer.CustomerAddress)
+			RuleFor(invoice => invoice.CustomerAddress)
 				.MinimumLength(15)
 				.MaximumLength(150)
 				.NotEmpty()
 				.WithMessage("Every customer must have an address")
 				.WithErrorCode("400");
-			RuleFor(invoice => invoice.Customer.CustomerId)
+			RuleFor(invoice => invoice.CustomerNumber)
 				.NotEmpty();
 			RuleForEach(invoice => invoice.Items).SetValidator(new CreateInvoiceItemDtoValidator());
 			RuleFor(invoice => invoice.InvoiceDate)

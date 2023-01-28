@@ -21,7 +21,7 @@ public class PlatformInvoiceTypeConfiguration : IEntityTypeConfiguration<Platfor
         builder.Property(p => p.DateIssued)
             .IsRequired();
         builder.Property(p => p.Description)
-            .HasMaxLength(200)
+            .HasMaxLength(300)
             .IsRequired(false);
     }
 }
