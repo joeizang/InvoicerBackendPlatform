@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoicerDomainBusinessLogic
+namespace InvoicerDomainBusinessLogic;
+
+public static class Bootstrapper
 {
-    public static class Bootstrapper
+    public static void BootstrapBusinessLogic(this IServiceCollection services)
     {
-        public static void BootstrapBusinessLogic(this IServiceCollection services)
-        {
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-        }
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
     }
 }

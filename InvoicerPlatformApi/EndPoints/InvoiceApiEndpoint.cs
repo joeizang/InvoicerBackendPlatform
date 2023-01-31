@@ -23,7 +23,7 @@ namespace InvoicerPlatformApi.EndPoints
             .Produces(StatusCodes.Status200OK);
 
 
-            group.MapGet("/{id}", async (InvoiceService service, Guid id) =>
+            group.MapGet("/{id:guid}", async (InvoiceService service, Guid id) =>
             {
                 if (id == Guid.Empty) return Results.BadRequest();
                 var result = await service.GetInvoiceById(id).ConfigureAwait(false);
@@ -54,11 +54,6 @@ namespace InvoicerPlatformApi.EndPoints
             .Produces<Response<InvoiceDetailDto>>()
             .Produces(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status400BadRequest);
-
-            group.MapPut("/", async (InvoiceService service, IValidator<UpdateInvoiceDto> validator, [FromBody] UpdateInvoiceDto inputModel) =>
-            {
-
-            });
 
 
             return group;

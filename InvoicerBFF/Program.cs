@@ -1,6 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Microsoft.AspNetCore.Authentication;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication()
+    .AddCookie(options =>
+    {
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+
+    });
+
+var app = builder.Build();
 
 app.Run();

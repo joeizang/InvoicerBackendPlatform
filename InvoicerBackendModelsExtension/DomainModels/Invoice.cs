@@ -6,13 +6,14 @@ namespace InvoicerBackendModelsExtension.DomainModels;
 
 public class Invoice : BaseEntity
 {
-    private Invoice() { _invoiceItems = new(); }
+    private Invoice() { _invoiceItems = new List<InvoiceItem>(); Total = new Money(); }
     public Invoice(CryptoRandom random) : base(random)
     {
         _invoiceItems = new List<InvoiceItem>();
+        Total = new Money();
     }
 
-    private List<InvoiceItem> _invoiceItems;
+    private readonly List<InvoiceItem> _invoiceItems;
 
     public string BriefInvoiceDescription { get; set; } = string.Empty;
 
@@ -25,6 +26,8 @@ public class Invoice : BaseEntity
     public string BusinessName { get; set; } = string.Empty; 
 
     public DateOnly InvoiceDate { get; set; }
+
+    public bool InValidateInvoice { get; set; } = true;
 
     public Money Total { get; set; }
 
@@ -50,5 +53,11 @@ public class Invoice : BaseEntity
             _invoiceItems.Add(items[count]);
             count++;
         }
+    }
+    
+    public void ValidateInvoice()
+    {
+        if (InValidateInvoice)
+            InValidateInvoice = true;
     }
 }

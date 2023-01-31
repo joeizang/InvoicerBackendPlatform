@@ -13,9 +13,10 @@ namespace InvoicerDataExtension.Data
   {
     public InvoicerPlatformContext(DbContextOptions<InvoicerPlatformContext> options)
         : base(options)
-    {
+    { }
 
-    }
+    public InvoicerPlatformContext()
+    { }
 
     public InvoicerPlatformContext(
         DbContextOptionsBuilder<InvoicerPlatformContext> options)

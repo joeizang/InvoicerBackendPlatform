@@ -11,18 +11,18 @@ public class PlatformInvoice : BaseEntity
   private List<PlatformService> _services;
   public PlatformInvoice(CryptoRandom random) : base(random)
   {
-    _services = new();
+    _services = new List<PlatformService>();
   }
 
   public PlatformInvoice(CreatePlatformInvoiceDto inputModel)
   {
-    _services = new();
+    _services = new List<PlatformService>();
     ValidateAndSetProperties(inputModel);
   }
 
   public PlatformInvoice()
   {
-    _services = new();
+    _services = new List<PlatformService>();
   }
 
   public DateTime DateIssued { get; private set; }
@@ -37,7 +37,7 @@ public class PlatformInvoice : BaseEntity
 
   public PlatformCustomer Customer { get; set; } = default!;
 
-  public IReadOnlyList<PlatformService> Services =>
+  public IEnumerable<PlatformService> Services =>
       _services.AsReadOnly();
 
   private void ValidateAndSetProperties(CreatePlatformInvoiceDto inputModel)

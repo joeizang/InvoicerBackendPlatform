@@ -7,23 +7,23 @@ namespace InvoicerBackendModelsExtension.DomainModels;
 
 public class PlatformCustomer : BaseEntity
 {
-  private List<PlatformInvoice> _invoices;
+  private readonly List<PlatformInvoice> _invoices;
   public PlatformCustomer(CryptoRandom random) : base(random)
   {
-    _invoices = new();
+    _invoices = new List<PlatformInvoice>();
   }
 
   public PlatformCustomer(CreatePlatformCustomerDto inputModel)
   {
-    _invoices = new();
+    _invoices = new List<PlatformInvoice>();
   }
 
   public PlatformCustomer()
   {
-    _invoices = new();
+    _invoices = new List<PlatformInvoice>();
   }
 
-  public IReadOnlyList<PlatformInvoice> Invoices => _invoices.AsReadOnly();
+  public IEnumerable<PlatformInvoice> Invoices => _invoices.AsReadOnly();
 
   public string PlatformCustomerName { get; set; } = string.Empty;
 

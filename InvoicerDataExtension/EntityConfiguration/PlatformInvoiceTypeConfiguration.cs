@@ -23,6 +23,7 @@ public class PlatformInvoiceTypeConfiguration : IEntityTypeConfiguration<Platfor
         builder.Property(p => p.Description)
             .HasMaxLength(300)
             .IsRequired(false);
+        builder.HasQueryFilter(pi => !pi.IsDeleted);
     }
 }
 
