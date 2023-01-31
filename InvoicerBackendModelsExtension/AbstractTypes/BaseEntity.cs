@@ -20,6 +20,7 @@ public abstract class BaseEntity : IBaseEntity
     private readonly CryptoRandom _random;
     protected BaseEntity()
     {
+        _random = new CryptoRandom();
         GenerateId();
         CreatedAt = DateTimeOffset.UtcNow;
         UpdatedAt = DateTimeOffset.UtcNow;

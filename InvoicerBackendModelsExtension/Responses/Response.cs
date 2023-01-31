@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvoicerBackendModelsExtension.Responses
 {
-    public record Response<T>(T Data, IEnumerable<string> Errors, string Message, bool Success) where T : class
+    public record Response<T>(T Data, IEnumerable<string>? Errors, string Message, bool Success) where T : class
     {
 
     }
