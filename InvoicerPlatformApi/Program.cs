@@ -13,8 +13,12 @@ using InvoicerDataExtension;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<CryptoRandom>();
 // Add services to the container.
+builder.Services.AddDbContext<InvoicerPlatformContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"));
+    //.EnableSensitiveDataLogging();
+});
 
-builder.Services.BootstrapDataExtension(builder, "Postgres");
 builder.Services.AddScoped<IValidator<CreateInvoiceDto>, CreateInvoiceDtoValidator>();
 builder.Services.AddScoped<IValidator<UpdateInvoiceDto>, UpdateInvoiceDtoValidator>();
 builder.Services.AddScoped<IValidator<CreateInvoiceItemDto>, CreateInvoiceItemDtoValidator>();
